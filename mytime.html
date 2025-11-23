@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>실시간 시계</title>
+    <style>
+      /* CSS: 시계를 가운데 정렬하고 보기 좋게 만듭니다. */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4;
+        font-family: Arial, sans-serif;
+      }
+
+      .clock {
+        font-size: 3em; /* 글자 크기를 크게 */
+        font-weight: bold;
+        color: #333;
+        padding: 20px;
+        border: 5px solid #333;
+        border-radius: 10px;
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock" id="current-time">로딩 중...</div>
+
+    <script type="module">
+      (async () => {
+        function updateTime() {
+          const now = new Date();
+
+          const timeString = now.toLocaleTimeString("ko-KR", {
+            hour: "2-digit", // 시 (두 자리)
+            minute: "2-digit", // 분 (두 자리)
+            second: "2-digit", // 초 (두 자리)
+            hour12: false, // 24시간제로 설정 (선택 사항)
+          });
+
+          document.getElementById("current-time").textContent = timeString;
+        }
+
+        updateTime();
+
+        setInterval(updateTime, 1000);
+      })();
+    </script>
+  </body>
+</html>
