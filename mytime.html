@@ -30,34 +30,34 @@
   </head>
   <body>
     <div class="clock" id="current-time">로딩 중...</div>
-
-    <script type="module">
-      // 페이지가 열리자마자 바로 실행되는 코드 덩어리입니다.
-      (async () => {
-        // updateTime: 현재 시간을 구해서 화면에 뿌려주는 함수(기능)입니다.
-        function updateTime() {
-          // 1. 현재 컴퓨터의 날짜와 시간 정보를 가져옵니다.
-          const now = new Date();
-
-          // 2. 가져온 시간을 한국 형식("ko-KR")의 문자열로 예쁘게 변환합니다.
-          const timeString = now.toLocaleTimeString("ko-KR", {
-            hour: "2-digit", // 시를 두 자리 숫자로 (예: 09시)
-            minute: "2-digit", // 분을 두 자리 숫자로 (예: 05분)
-            second: "2-digit", // 초를 두 자리 숫자로
-            hour12: false, // false면 24시간제(14시), true면 12시간제(오후 2시)
-          });
-
-          // 3. 아까 만들어둔 시계 박스(id="current-time")의 글자 내용을 현재 시간으로 바꿉니다.
-          document.getElementById("current-time").textContent = timeString;
-        }
-
-        // 페이지가 켜지자마자 한 번 시간을 표시합니다. (안 그러면 1초 동안 '로딩 중...'이 보일 수 있음)
-        updateTime();
-
-        // setInterval: 1000밀리초(1초)마다 updateTime 함수를 계속 실행시킵니다.
-        // 이것 때문에 시계가 실시간으로 움직이는 것처럼 보입니다.
-        setInterval(updateTime, 1000);
-      })();
-    </script>
   </body>
+
+  <script type="module">
+    // 페이지가 열리자마자 바로 실행되는 코드 덩어리입니다.
+    (async () => {
+      // updateTime: 현재 시간을 구해서 화면에 뿌려주는 함수(기능)입니다.
+      function updateTime() {
+        // 1. 현재 컴퓨터의 날짜와 시간 정보를 가져옵니다.
+        const now = new Date();
+
+        // 2. 가져온 시간을 한국 형식("ko-KR")의 문자열로 예쁘게 변환합니다.
+        const timeString = now.toLocaleTimeString("ko-KR", {
+          hour: "2-digit", // 시를 두 자리 숫자로 (예: 09시)
+          minute: "2-digit", // 분을 두 자리 숫자로 (예: 05분)
+          second: "2-digit", // 초를 두 자리 숫자로
+          hour12: false, // false면 24시간제(14시), true면 12시간제(오후 2시)
+        });
+
+        // 3. 아까 만들어둔 시계 박스(id="current-time")의 글자 내용을 현재 시간으로 바꿉니다.
+        document.getElementById("current-time").textContent = timeString;
+      }
+
+      // 페이지가 켜지자마자 한 번 시간을 표시합니다. (안 그러면 1초 동안 '로딩 중...'이 보일 수 있음)
+      updateTime();
+
+      // setInterval: 1000밀리초(1초)마다 updateTime 함수를 계속 실행시킵니다.
+      // 이것 때문에 시계가 실시간으로 움직이는 것처럼 보입니다.
+      setInterval(updateTime, 1000);
+    })();
+  </script>
 </html>
